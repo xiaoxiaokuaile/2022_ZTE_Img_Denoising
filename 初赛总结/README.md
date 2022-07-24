@@ -16,7 +16,7 @@ AI可进一步提升图像主客观质量在学术和工业界得到了广泛认
 
 训练集数据一共100张3472×4024分辨率的图，由于租用的机器为单卡V100-16G，整图参与训练不方便，故将每张图裁剪为320张256×256大小的切片图，以4个角为基准每个角裁剪8×10=80张图并保存为.bin格式，最终数据集为32000张256×256的切片图，切割方式如图4所示：
 
-![](xiaoxiaokuaile/2022_ZTE_Img_Denoising\初赛总结\README_img\初赛切图.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E5%88%9D%E8%B5%9B%E5%88%87%E5%9B%BE.png)
 
 #####                                                                          图1：数据集切分效果图  
 
@@ -60,39 +60,39 @@ AI可进一步提升图像主客观质量在学术和工业界得到了广泛认
 
 绘制噪点分布直方图：
 
-![](README_img\训练集噪点分布直方图.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E8%AE%AD%E7%BB%83%E9%9B%86%E5%99%AA%E7%82%B9%E5%88%86%E5%B8%83%E7%9B%B4%E6%96%B9%E5%9B%BE.png)
 
 #####                                                                          图2：训练集噪点分布直方图
 
-![](README_img\测试集噪点分布.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E6%B5%8B%E8%AF%95%E9%9B%86%E5%99%AA%E7%82%B9%E5%88%86%E5%B8%83.png)
 
 #####                                                                          图3：测试集噪点分布直方图
 
 在竞赛初期赛题组出题专家有说有五类噪声,根据上面表图分析可知这五种类型数据应当是五种不同参数的高斯噪声分布，为了更直观进行分类，将噪声可视化为三维图如图7所示：
 
-![](README_img\训练集噪声分布1.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E8%AE%AD%E7%BB%83%E9%9B%86%E5%99%AA%E5%A3%B0%E5%88%86%E5%B8%831.png)
 
 #####                                                      (a)噪声分布1,第1-20张图,大致范围[-2500,2500]
 
-![](README_img\训练集噪声分布2.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E8%AE%AD%E7%BB%83%E9%9B%86%E5%99%AA%E5%A3%B0%E5%88%86%E5%B8%832.png)
 
 #####                                                     (b)噪声分布2, 第21-40张图,大致范围[-1000,1000]
 
-![](README_img\训练集噪声分布3.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E8%AE%AD%E7%BB%83%E9%9B%86%E5%99%AA%E5%A3%B0%E5%88%86%E5%B8%833.png)
 
 #####                                                    (c)噪声分布3,第41-60张图,大致范围[-2000,2000]
 
-![](README_img\训练集噪声分布4.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E8%AE%AD%E7%BB%83%E9%9B%86%E5%99%AA%E5%A3%B0%E5%88%86%E5%B8%834.png)
 
 #####                                                     (d)噪声分布4,第61-80张图,大致范围[-5000,5000]
 
-![](README_img\训练集噪声分布5.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E8%AE%AD%E7%BB%83%E9%9B%86%E5%99%AA%E5%A3%B0%E5%88%86%E5%B8%835.png)
 
 #####                                                     (e)噪声分布5,第81-100张图,大致范围[-5000,0]
 
 #####                                                                          图4：训练集五种噪声分布  
 
-![](README_img\测试集噪声.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E6%B5%8B%E8%AF%95%E9%9B%86%E5%99%AA%E5%A3%B0.png)
 
 #####                                                                              图4.测试集噪声分布
 
@@ -110,7 +110,7 @@ AI可进一步提升图像主客观质量在学术和工业界得到了广泛认
 
 #### 5.1.Unet网络实验：
 
-![](README_img\Unet结构.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/Unet%E7%BB%93%E6%9E%84.png)
 
 #####                                                                          图5.Unet网络结构
 
@@ -129,7 +129,7 @@ AI可进一步提升图像主客观质量在学术和工业界得到了广泛认
 
 ### 5.2. Unet++结构网络实验：  
 
-![](README_img\Unet++结构.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/Unet%2B%2B%E7%BB%93%E6%9E%84.png)
 
 #####                                                                                    图6.Unet++网络结构
 
@@ -150,7 +150,7 @@ AI可进一步提升图像主客观质量在学术和工业界得到了广泛认
 
 ### 5.3.改进 Unet++结构网络实验：
 
-![](README_img\改进Unet结构.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E6%94%B9%E8%BF%9BUnet%E7%BB%93%E6%9E%84.png)
 
 #####                                                                           图7.改进Unet++网络结构
 
@@ -160,7 +160,7 @@ AI可进一步提升图像主客观质量在学术和工业界得到了广泛认
 
 ### 5.4. Restormer网络结构实验：  
 
-![](README_img\Restomer结构.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/Restomer%E7%BB%93%E6%9E%84.png)
 
 #####                                                                               图8.Restormer网络结构
 
@@ -176,7 +176,7 @@ AI可进一步提升图像主客观质量在学术和工业界得到了广泛认
 
 ### 5.5.MPRNet网络结构实验    
 
-![](README_img\MPRNet结构.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%88%9D%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/MPRNet%E7%BB%93%E6%9E%84.png)
 
 #####                                                                         图9.MPRNet网络结构
 
