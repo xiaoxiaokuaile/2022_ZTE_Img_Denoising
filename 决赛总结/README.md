@@ -40,9 +40,9 @@
 
 ### 4. 解题思路
 
-![](README_img\插图1.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%86%B3%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E6%8F%92%E5%9B%BE1.png)
 
-![](README_img\插图2.png)
+![](https://github.com/xiaoxiaokuaile/2022_ZTE_Img_Denoising/blob/master/%E5%86%B3%E8%B5%9B%E6%80%BB%E7%BB%93/README_img/%E6%8F%92%E5%9B%BE2.png)
 
 可以知道噪声可以估计的参数只有方差，但是有a和b两个参数,一张图统计方差是无法求解的，观察噪声图可知分辨率是比较高的，因而可以对原始图像不重叠切分若干张446×446大小切片，任取两张统计标准差sigma1,sigma2(最终选取噪声分布+δ和+2δ的均值代替标准差),同时两张切片图的均值raw1和raw2近似作为该区域所有像素点的raw值，由此可得上图中两个方程，由上面两个方程即可解出a,b值，不过这样得到的a,b值可信度不高,故迭代2000次随机抽取两张不重叠图像计算对应a,b值，最终取这2000组数据的中值作为最终所需a,b值，此时得到的a,b可信度非常高了。
 
